@@ -41,7 +41,10 @@
               // HINT: Look to see how this is done in the postMessage Exercise
             // Return the data property of event
 
-          
+          postRobot.on('email', function(event){
+              document.getElementById('exampleInputEmail1').value = event.data.message;
+              return event.data;
+          });
     
           //END PART 2.
           
@@ -63,7 +66,7 @@
                   // Message name should be 'onLogin'
                   // Message data should be the user variable
                   // No callback function
-                
+                postRobot.send(window.parent, 'onLogin', user);
                 
 
                 // END PART 3
@@ -78,8 +81,8 @@
             // Use postRobot to listen for a message
               // Message name is 'getUser'.
               // Callback function should return the user variable.
-            
-            
+          
+            postRobot.on('getUser', function(event){ return user; });
 
             // END PART 6
             

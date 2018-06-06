@@ -77,7 +77,10 @@
                 // Use PayPal library to call the Setexpress checkout API endpoint GET /paypal/classic/setexpresscheckout
                 // In the then callback return the TOKEN property of the response
                 // Return the response from the function call
-            
+            return paypal.request.post('/paypal/classic/setexpresscheckout')
+                .then(function(data){
+                    return data.TOKEN;
+                });
 
 
             // END PART 1
@@ -89,8 +92,8 @@
             // PART 2: Complete getExpressCheckout function
                 // Use PayPal library to call getexpresscheckout api endpoint GET /paypal/classic/getexpresscheckout/YOURTOKEN
                 // call formPopulate function with the response
-            
-
+            return paypal.request.post('/paypal/classic/getexpresscheckout/' + data.paymentToken)
+                .then(formPopulate);
             // END PART 2
             
         }
@@ -99,9 +102,9 @@
         function doExpressCheckout(data, actions) {
 
             var nvpParams = {
-                TOKEN: 'YOURTOKEN',
-                PAYERID: 'YOURPAYERID',
-                PAYMENTACTION: 'YOURPAYMENTACTION'
+                TOKEN: data.paymentToken,
+                PAYERID: data.payerID,
+                PAYMENTACTION: data.intent
             };
 
             // PART 3: Complete doExpressCheckout function
@@ -110,7 +113,8 @@
                     // Send the nvpParams variable with the api call.
                     // Then call the handleResponse function with the response from the api call.
             
-
+            return paypal.request.post("/paypal/classic/doexpresscheckout", nvpParams)
+              .then(handleResponse);
             
 
             // END PART 3

@@ -37,7 +37,7 @@
           // PART 3: Implement Email xprop
             // set email input to value of email xprop.
           
-          
+          document.getElementById('exampleInputEmail1').value = window.xprops.email;
           
 
           document.getElementById('submitButton')
@@ -56,7 +56,7 @@
                 // PART 3: Implement onLogin xprop
                   // call the function and send it user variable
                 
-                
+                window.xprops.onLogin(user);
 
                 
                 hideDom('spinner');
@@ -68,7 +68,7 @@
 
             // PART 3: Implement getUser xprop
               // call the function and send it user variable
-            
+            window.xprops.getUser(user);
               
         </script>
 

@@ -71,7 +71,10 @@
         // Call addOutput function with 'Received Email Message'
         // Extra Credit: Add the users email from the response to the output message.
 
-      
+      postRobot.send(iframe, 'email', emailMessage)
+               .then(function(event){
+                addOutput("Received Email Message: " + event.data.message);
+      });
       
       // END PART 1
 
@@ -82,7 +85,11 @@
           // Use addOutput to add 'onLogin Message Received'
           // Set global user variable equal to event.data
           // execute displayUserInformation with user as the argument
-     
+     postRobot.on('onLogin', function(event){
+      addOutput('onLogin Message Received');
+      user = event.data;
+      displayUserInformation(user);
+     });
       
 
       // END PART 4
@@ -94,7 +101,7 @@
           // No data for this message
         // When promise resolves call handleGetUserMessage function with event
 
-      
+      postRobot.send(iframe, 'getUser').then(handleGetUserMessage);
     
       // END PART 5
       
@@ -108,7 +115,7 @@
           // Execute user logout function
           // When the promise resolves call the handleLogoutMessage with event.
 
-        
+        user.logout().then(handleLogoutMessage);
 
           // END PART 7
 

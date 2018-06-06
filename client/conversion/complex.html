@@ -21,7 +21,7 @@
                 <input type="text" class="form-control" id="testInput" placeholder="Fails on less than 3 characters" name="testInput" minlength="3" required>
             </div>
         </form>
-        <div id="paymentMethods">
+        <div id="paymentMethods" style="display:none">
             <div id="paypal-button1"></div>
             <div>Some Cool Text</div>
             <div id="paypal-button2"></div>
@@ -46,7 +46,7 @@
         }
 
         // Comment me out when starting the exercise.
-        
+        /*
         window.paypalCheckoutReady = function () {
             paypal.checkout.setup('merchantid', {
                 environment: 'sandbox',
@@ -61,7 +61,7 @@
                 }
             });
         }
-        
+        */
     </script>
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
@@ -107,7 +107,33 @@
             // Make sure you use the styling and commit properties from the button config
             // Add style="display:none" to the paymentMethods DOM id
             
-        
+        buttonConfig.map(function(button){
+            paypal.Button.render({
+                env:'sandbox',
+                payment: function(){
+                    return paypal
+                            .request
+                            .post('paypal/classic/setexpresscheckout')
+                            .then(function(data){
+                                return data.TOKEN;
+                            });
+                },
+                onError: onError,
+                onAuthorize: function(data, actions){
+                    return actions.redirect();
+                },
+                onCancel: function(data, actions){
+                    return actions.redirect();
+                },
+                commit: button.commit,
+                style: {
+                    color: button.color,
+                    size: button.size,
+                    shape: button.shape
+                }
+            }, button.id);
+
+        });
         
         // END PART 1
 
@@ -119,7 +145,13 @@
             // If the form is valid execute showDom('paymentMethods');
             // otherwise  hideDom('paymentMethods');
         
-       
+        input.addEventListener('keyup', function(event){
+            if(input.checkValidity()){
+                showDom('paymentMethods');
+            } else {
+                hideDom('paymentMethods');
+            }
+        });
 
         // END PART 2
     

@@ -71,7 +71,7 @@
           // You must use the postMessage function on the contentWindow property of the iframe variable
           // Send the emailMessage variable as a string
           // Use "*" as the domain
-
+          iframe.contentWindow.postMessage(JSON.stringify(emailMessage), "*");
 
         // END Part 1
         
@@ -83,7 +83,12 @@
       // JSON.parse the event data into a new variable named data.
       // Call handleMessage function with data variable
 
+      window.addEventListener('message', function(event){
+        var data = JSON.parse(event.data);
+            handleMessage(data);
+      });
 
+    
 
       // END PART 4
 

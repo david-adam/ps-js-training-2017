@@ -95,7 +95,21 @@
             // Button2 shoudl be medium, rectangular, and PayPal Credit
             // Use the array map function to execute createPayPalButton for each object.
 
-        
+        var buttonConfig = [
+            {
+                id: "#paypal-button1",
+                size: "tiny",
+                color: "silver",
+                shape: "pill",
+                //commit: true
+            }
+            // {
+            //     id: "#paypal-button2",
+            //     size: "medium",
+            //     shape: "rect",
+            //     label: "credit"
+            // }
+        ].map(createPayPalButton);
         
         
     </script>

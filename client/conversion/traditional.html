@@ -10,20 +10,20 @@
     <div class="row">
       <div class="col-md-12">
         <h3>Traditional Conversion</h3>
-        <a id="paypal-button" href="/misc/setexpresscheckout"></a>
+        <div id="paypal-button"></div>
       </div>
     </div>
     
     <script type="text/javascript">
         // Comment me out when starting the exercise
-        
+        /*
         window.paypalCheckoutReady = function () {
             paypal.checkout.setup('merchantid', {
                 environment: 'sandbox',
                 container: 'paypal-button'
             });
         }
-        
+        */
     </script>
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     
@@ -54,7 +54,24 @@
                 // Remove the href
                 
 
-        
+        paypal.Button.render({
+            env: 'sandbox',
+            client: client,
+            payment: function(){
+                return paypal.request.post('/paypal/classic/setexpresscheckout')
+                        .then(function(data){
+                            return data.TOKEN;
+                        });
+            },
+            onAuthorize: function(data, actions){
+                return actions.redirect();
+            },
+            onCancel: function(data, actions){
+                return actions.redirect();
+            },
+            onError: onError
+        }, '#paypal-button');
+
         
     </script>
 

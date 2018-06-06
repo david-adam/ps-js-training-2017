@@ -14,6 +14,22 @@ var LoginComponent = xcomponent.create({
                 // getUser. type is function required is false
                 // user.  type is object required is false
         
+        email:{
+            type: 'string',
+            required: false
+        },
+        onLogin: {
+            type: 'function',
+            required: false
+        },
+        getUser: {
+            type: 'function',
+            required: false
+        },
+        user: {
+            type: 'object',
+            required: false
+        }
 
         // END PART 1
         

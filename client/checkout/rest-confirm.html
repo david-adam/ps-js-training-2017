@@ -86,7 +86,8 @@
                 // First switch to the iframe scope and execure the following in the console: window.xprops.payment().then(data => console.log('MYTOKENIS', data)).catch(err => console.log(err));
                 // Complete the getPayPalInformation function to execute the payment get function and return the promise.
                 // then call the prepoluate function with the data returned from paymen get.
-            
+            return actions.payment.get()
+                    .then(prepopulate);
             // END PART 1
         }
 
@@ -98,7 +99,11 @@
                 // Use paypal.Promise.all to execute the getPayPalInformation and setupExecute functions
                 // Pro Tip: the one argument to all function is an array of promises
                 // return the result of the all function
-            
+            return paypal.Promise.all([
+                getPayPalInformation(data, actions),
+                setupExecute(data, actions)
+            ]);
+
             // END PART 2
         }
     

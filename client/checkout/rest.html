@@ -70,7 +70,7 @@
                 // Use the paypal library to make the REST call to create payment
                 // Look at the checkout.js docs or github docs.  https://github.com/paypal/paypal-checkout/blob/master/docs/button.md
                 // Use the following variables as arguments: environment, client, transaction
-
+            return paypal.rest.payment.create(environment, client, transaction);
 
             // END PART 1
         }
@@ -80,7 +80,10 @@
                 // Use the information passed to this function to execute the payment.
                 // Then call the handleResponse function.
             
-            
+            return actions
+                    .payment
+                    .execute()
+                    .then(handleResponse);
             // END PART 3
         }
     
@@ -96,7 +99,20 @@
         // Make the button a medium, blue, rectangle
         // DOM id is '#paypal-button'
 
-        
+        paypal.Button.render({
+            env: environment,
+            client: client,
+            onError: onError,
+            onCancel: onCancel,
+            payment: payment,
+            onAuthorize: onAuthorize,
+            commit: true,
+            tyle: {
+                size: "medium",
+                color: "blue",
+                shape: "rect"
+            }
+        }, '#paypal-button');
 
         // END PART 2
         

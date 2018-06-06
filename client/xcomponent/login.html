@@ -64,7 +64,11 @@
           // Implement getUser property as getUser function
           // Implement onLogin property as onLogin function
           // Do not set user property
-      
+      LoginComponent.renderLightbox({
+        email: 'test@awesome.com',
+        getUser: getUser,
+        onLogin: onLogin
+      });
 
       // END PART 2
 

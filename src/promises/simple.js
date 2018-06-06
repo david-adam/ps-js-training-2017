@@ -7,7 +7,7 @@ function async1(number) {
             if (number < 10) {
                 return resolve('Async1 resolved the promise');
             } else {
-                return reject('Async2 rejected the promise');
+                return reject('Async1 rejected the promise');
             }
         }, 3000);
     });

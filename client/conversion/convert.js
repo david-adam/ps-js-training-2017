@@ -8,7 +8,11 @@
         // Set the onload property to the paypalCheckoutReady function
         // Append the script to the document head.
 
-
+        var payPalScriptTag = document.createElement('script');
+        payPalScriptTag.type = "text/javascript";
+        payPalScriptTag.src = "//www.paypalobjects.com/api/checkout.js";
+        payPalScriptTag.onload = paypalCheckoutReady;
+        document.head.appendChild(payPalScriptTag);
 
 // END PART 1
 
@@ -18,8 +22,9 @@
     // Inspect the current button
     // Target the button and place it in a variable called oldButton
         // use innerHTML to remove the current contents
-
-
+var payPalToken = 'my-token...'
+var oldButton = document.getElementsByClassName('PayPalBtn')[0];
+oldButton.innerHTML = '';
 // END PART 2
 
 
@@ -38,7 +43,24 @@ function paypalCheckoutReady() {
             // Style the button with the blue color
             // Pass the oldButton variable as the DOM id
 
-        
+        payPal.Button.render({
+            env: 'production',
+            onCancel: function(data, actions){
+                return actions.redirect();
+            },
+            onError: function(err){
+                console.log(err);
+            },
+            payment: function(){
+                return payPalToken;
+            },
+            onAuthorize: function(data, actions){
+                return actions.redirect();
+            },
+            style: {
+                color: 'blue'
+            }
+        }, oldButton);
         
         
         // END PART 3

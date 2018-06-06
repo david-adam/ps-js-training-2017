@@ -42,7 +42,13 @@
                 // call postMessage on the parent window, window.parent to send a confirmation message back to the parent.
                   // The message should be a stringified object with property type equal to "email"
 
-          
+          window.addEventListener('message', function(event){
+             var data = JSON.parse(event.data);
+             if(data.type === "email") {
+               document.getElementById("exampleInputEmail1").value = data.message;
+               window.parent.postMessage(JSON.stringify({type: 'email'}), "*");
+             }
+          });
 
           
           // END PART 2
@@ -70,7 +76,7 @@
                   // call postMessage on the parent window, window.parent
                   // Send loginMessage as a string.
                   // Use "*" as the domain.  
-
+                window.parent.postMessage(JSON.stringify(loginMessage), "*");
                   
 
                 // END PART 3

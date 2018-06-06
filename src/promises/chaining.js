@@ -44,7 +44,7 @@ function async3(number) {
 }
 
 console.log('Welcome to the promise chaining example');
-async1(1)
+async1(5)
     .then(async2)
     .then(async3)
     .then((number) => {
