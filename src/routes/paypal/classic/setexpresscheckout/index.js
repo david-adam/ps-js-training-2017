@@ -14,6 +14,7 @@ export default function (router) {
             if (err) {
                 res.json(err);
             } else {
+                response.TOKEN = { TOKEN: response.TOKEN };
                 res.json(response);
             }
 

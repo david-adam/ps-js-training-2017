@@ -77,7 +77,7 @@
                 // Use PayPal library to call the Setexpress checkout API endpoint GET /paypal/classic/setexpresscheckout
                 // In the then callback return the TOKEN property of the response
                 // Return the response from the function call
-            return paypal.request.post('/paypal/classic/setexpresscheckout')
+            return paypal.request.get('/paypal/classic/setexpresscheckout')
                 .then(function(data){
                     return data.TOKEN;
                 });
@@ -92,7 +92,7 @@
             // PART 2: Complete getExpressCheckout function
                 // Use PayPal library to call getexpresscheckout api endpoint GET /paypal/classic/getexpresscheckout/YOURTOKEN
                 // call formPopulate function with the response
-            return paypal.request.post('/paypal/classic/getexpresscheckout/' + data.paymentToken)
+            return paypal.request.get('/paypal/classic/getexpresscheckout/' + data.paymentToken)
                 .then(formPopulate);
             // END PART 2
             
