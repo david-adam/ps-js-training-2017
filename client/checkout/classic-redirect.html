@@ -22,7 +22,11 @@
                     .request
                     .get('/paypal/classic/setexpresscheckout')
                     .then(function (data) {
-                        return data.TOKEN;
+                        if (data.error) {
+                            throw data.error;
+                        } else {
+                            return data.TOKEN;
+                        }
                     });
         }
         // END Setup

@@ -4,7 +4,7 @@
         "workspace": "training2017"
     },
     "paypalRestConfig": {
-        "mode": "sandbox",  // sandbox || live
+        "mode": "sandbox",
         "client_id": "AVGigtRsEjPZdshjlvaiOJyVWu3OPrwwLNPwBcFi6FlgLw_RJbEEObWfkSkYwSe4FS1oba12dCRqFDyr",
         "client_secret": "EAEzjYabKDlyAxvTTOQusAtQTxloX2UKQfjO_-K1MO6gJ8dPuVDeBOF2ocF00Vsd9zdvuifTqcI2KViy"
     },
@@ -15,7 +15,7 @@
         "live": false
     },
     "braintreeConfig" : {
-        "environment": "Sandbox",  //  Sandbox || Production
+        "environment": "Sandbox",
         "merchantId": "wkqn2r5yxbvdgs4r",
         "publicKey": "m3zd8fgjyjw2p7yr",
         "privateKey": "ae3a67109fef1965a922d89553962e80"
