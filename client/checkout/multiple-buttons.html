@@ -95,22 +95,39 @@
             // Button2 shoudl be medium, rectangular, and PayPal Credit
             // Use the array map function to execute createPayPalButton for each object.
 
-        var buttonConfig = [
-            {
-                id: "#paypal-button1",
-                size: "tiny",
-                color: "silver",
-                shape: "pill",
-                //commit: true
-            }
-            // {
-            //     id: "#paypal-button2",
-            //     size: "medium",
-            //     shape: "rect",
-            //     label: "credit"
-            // }
-        ].map(createPayPalButton);
-        
+        // var buttonConfig = [
+        //     {
+        //         id: "#paypal-button1",
+        //         size: "tiny",
+        //         color: "silver",
+        //         shape: "pill",
+        //         commit: true
+        //     },
+        //     {
+        //         id: "#paypal-button2",
+        //         size: "medium",
+        //         shape: "rect",
+        //         label: "credit"
+        //     }
+        // ].map(createPayPalButton);
+
+
+            paypal.Button.render({
+                env: 'sandbox',
+                client: {
+                    sandbox: 'AVGigtRsEjPZdshjlvaiOJyVWu3OPrwwLNPwBcFi6FlgLw_RJbEEObWfkSkYwSe4FS1oba12dCRqFDyr'
+                },
+                onError: onError,
+                onCancel: onCancel,
+                payment: createPayment,
+                onAuthorize: executePayment,
+                commit: true,
+                style: {
+                    size: "medium",
+                    shape: "rect",
+                    label: "credit"
+                }
+            }, "#paypal-button2");
         
     </script>
     
