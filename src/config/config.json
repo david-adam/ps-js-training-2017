@@ -9,9 +9,9 @@
         "client_secret": "EAEzjYabKDlyAxvTTOQusAtQTxloX2UKQfjO_-K1MO6gJ8dPuVDeBOF2ocF00Vsd9zdvuifTqcI2KViy"
     },
     "paypalClassicConfig": {
-        "username": "david.g.adam+seller_api1.gmail.com",
-        "password": "2V94HFFJWPYYCBM3",
-        "signature": "A6Rvi3rGatmLsbsG55EkJs4GYiANARA9KdcLO7I3--I0I1ioCtaaD7-n",
+        "username": "david.g.adam+thseller_api1.gmail.com",
+        "password": "5L7UCF4FR48JJUS4",
+        "signature": "Az9FqQOXky2ODVjgTKP-w.N6W38DAQtIv5oybIZigHHDTZ3M6KILMggr",
         "live": false
     },
     "braintreeConfig" : {
