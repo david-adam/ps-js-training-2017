@@ -6,7 +6,7 @@ export default function (router) {
         let nvpParams = {
             TOKEN: req.body.TOKEN,
             PAYERID: req.body.PAYERID,
-            AMT: '100',
+            AMT: req.body.AMT,
             PAYMENTACTION: req.body.PAYMENTACTION
         };
             
