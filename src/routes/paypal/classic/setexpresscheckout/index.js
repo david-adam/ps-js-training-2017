@@ -5,8 +5,8 @@ export default function (router) {
         let c9config = req.app.kraken.get('cloud9');
 
         let nvpParams = {
-            RETURNURL: 'https://' + c9config.workspace + '-' + c9config.username + '.c9users.io/misc/returnurl.html',
-            CANCELURL: 'https://' + c9config.workspace + '-' + c9config.username + '.c9users.io/misc/cancelurl.html',
+            RETURNURL: 'http://127.0.0.1:8080/checkout/classic.html?Successed',
+            CANCELURL: 'http://127.0.0.1:8080/checkout/classic.html?Cancelled',
             PAYMENTREQUEST_0_AMT: '50.00',
             // PAYMENTREQUEST_0_SHIPTONAME: 'Boonserm Phinphirom',
             // PAYMENTREQUEST_0_SHIPTOSTREET: '205/280 Pattanakan 65',
@@ -16,16 +16,16 @@ export default function (router) {
             // PAYMENTREQUEST_0_SHIPTOZIP: '10250',
             // PAYMENTREQUEST_0_SHIPTOCOUNTRYCODE: 'TH',
             // PAYMENTREQUEST_0_SHIPTOPHONENUM: '0866036366',
-            // PAYMENTREQUEST_0_SHIPTONAME: 'Piyachat Saichan',
-            // PAYMENTREQUEST_0_SHIPTOSTREET: '368 S Main St Rear',
-            // //PAYMENTREQUEST_0_SHIPTOSTREET2: '2508 Dolor. Av.',
-            // PAYMENTREQUEST_0_SHIPTOCITY: 'Andover',
-            // PAYMENTREQUEST_0_SHIPTOSTATE: 'MA',
-            // PAYMENTREQUEST_0_SHIPTOZIP: '01810-4824',
-            // PAYMENTREQUEST_0_SHIPTOCOUNTRYCODE: 'US',
-            // PAYMENTREQUEST_0_CURRENCYCODE: 'USD',
-            // ADDROVERRIDE: "1",
-            // NOSHIPPING: "0"
+            PAYMENTREQUEST_0_SHIPTONAME: 'Piyachat Saichan',
+            PAYMENTREQUEST_0_SHIPTOSTREET: '368 S Main St Rear',
+            //PAYMENTREQUEST_0_SHIPTOSTREET2: '2508 Dolor. Av.',
+            PAYMENTREQUEST_0_SHIPTOCITY: 'Andover',
+            PAYMENTREQUEST_0_SHIPTOSTATE: 'MA',
+            PAYMENTREQUEST_0_SHIPTOZIP: '01810-4824',
+            PAYMENTREQUEST_0_SHIPTOCOUNTRYCODE: 'US',
+            PAYMENTREQUEST_0_CURRENCYCODE: 'USD',
+            ADDROVERRIDE: "1",
+            NOSHIPPING: "0"
         };
             
         paypal.call('SetExpressCheckout', nvpParams, (err, response) => {

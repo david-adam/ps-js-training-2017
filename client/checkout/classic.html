@@ -22,8 +22,8 @@
         }
 
         function handleResponse(result) {
-            document.getElementById('paypal-execute-details').textContent = JSON.stringify(result, null, 2);
-            showDom('paypal-end');
+                document.getElementById('paypal-execute-details').textContent = JSON.stringify(result, null, 2);
+                showDom('paypal-end');    
         }
 
         function setupExecute(data, actions) {
@@ -51,7 +51,9 @@
             return paypal.Promise.all([ 
                 getExpressCheckout(data, actions), 
                 setupExecute(data, actions)
+            //    doExpressCheckout(data, actions)
             ]);
+            //return doExpressCheckout(data, actions);
         }
 
         paypal.Button.render({
@@ -109,6 +111,7 @@
                 TOKEN: data.paymentToken,
                 PAYERID: data.payerID,
                 AMT: document.getElementById('amt').value,
+                //AMT: '50',
                 PAYMENTACTION: data.intent
             };
 
@@ -119,8 +122,19 @@
                     // Then call the handleResponse function with the response from the api call.
             
             return paypal.request.post("/paypal/classic/doexpresscheckout", nvpParams)
-              .then(handleResponse);
+              .then(function(result){
+                    if(result.objects[0].ERRORCODE === 10486){ // use: buyer10486@awesome.com / 123456789 + VISA
+                        actions.restart();
+                    }else{
+                        document.getElementById('paypal-execute-details').textContent = JSON.stringify(result, null, 2);
+                        showDom('paypal-end');
+                }
+              });
             
+            /*
+            return paypal.request.post("/paypal/classic/doexpresscheckout", nvpParams)
+              .then(handleResponse);
+            */
 
             // END PART 3
         }
