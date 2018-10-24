@@ -5,8 +5,8 @@ export default function (router) {
         let c9config = req.app.kraken.get('cloud9');
 
         let nvpParams = {
-            RETURNURL: 'http://127.0.0.1:8080/checkout/classic.html?Successed',
-            CANCELURL: 'http://127.0.0.1:8080/checkout/classic.html?Cancelled',
+            RETURNURL: 'http://127.0.0.1:5129/checkout/classic.html?Successed',
+            CANCELURL: 'http://127.0.0.1:5129/checkout/classic.html?Cancelled',
             PAYMENTREQUEST_0_AMT: '50.00',
             // PAYMENTREQUEST_0_SHIPTONAME: 'Boonserm Phinphirom',
             // PAYMENTREQUEST_0_SHIPTOSTREET: '205/280 Pattanakan 65',
@@ -24,8 +24,10 @@ export default function (router) {
             PAYMENTREQUEST_0_SHIPTOZIP: '01810-4824',
             PAYMENTREQUEST_0_SHIPTOCOUNTRYCODE: 'US',
             PAYMENTREQUEST_0_CURRENCYCODE: 'USD',
-            ADDROVERRIDE: "1",
-            NOSHIPPING: "0"
+            ADDROVERRIDE: '0',
+            //SOLUTIONTYPE: 'Sole',
+            VERSION: '124',
+            NOSHIPPING: '2'
         };
             
         paypal.call('SetExpressCheckout', nvpParams, (err, response) => {
