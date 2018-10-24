@@ -7,6 +7,7 @@ export default function (router) {
             TOKEN: req.body.TOKEN,
             PAYERID: req.body.PAYERID,
             AMT: req.body.AMT,
+            VERSION: "124",
             PAYMENTACTION: req.body.PAYMENTACTION
         };
             

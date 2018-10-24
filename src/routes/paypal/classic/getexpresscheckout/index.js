@@ -5,6 +5,7 @@ export default function (router) {
 
         let nvpParams = {
             TOKEN: req.params.token,
+            VERSION: '124'
         };
             
         paypal.call('GetExpressCheckoutDetails', nvpParams, (err, response) => {

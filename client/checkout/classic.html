@@ -123,12 +123,18 @@
             
             return paypal.request.post("/paypal/classic/doexpresscheckout", nvpParams)
               .then(function(result){
-                    if(result.objects[0].ERRORCODE === 10486){ // use: buyer10486@awesome.com / 123456789 + VISA
-                        actions.restart();
-                    }else{
+                    var error_code = '';
+                    if(result.ACK === 'Success') {
                         document.getElementById('paypal-execute-details').textContent = JSON.stringify(result, null, 2);
                         showDom('paypal-end');
-                }
+                    }else{
+                        if(typeof result.objects[0] !== 'undefined' && typeof result.objects[0].ERRORCODE !== 'undefined'){
+                            error_code = result.objects[0].ERRORCODE;
+                            if(error_code === 10486){ // use: buyer10486@awesome.com / 123456789 + VISA
+                                actions.restart();
+                            }
+                        }
+                    }
               });
             
             /*
