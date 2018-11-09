@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
 
 </head>
@@ -33,7 +34,7 @@
 
     <script>
         // Exercise Setup
-        
+
         function onCancel() {
             showDom('paypal-cancel');
         }
@@ -48,28 +49,94 @@
         }
 
         var client = {
-            sandbox:    'AVGigtRsEjPZdshjlvaiOJyVWu3OPrwwLNPwBcFi6FlgLw_RJbEEObWfkSkYwSe4FS1oba12dCRqFDyr'
+            sandbox: 'AVGigtRsEjPZdshjlvaiOJyVWu3OPrwwLNPwBcFi6FlgLw_RJbEEObWfkSkYwSe4FS1oba12dCRqFDyr'
         };
 
         var environment = 'sandbox';
+        // var transaction = {
+        //     transactions: [
+        //         {
+        //             amount: {
+        //                 total:    '10.00',
+        //                 currency: 'EUR'
+        //             }
+        //         }
+        //     ]
+        // };
         var transaction = {
-            transactions: [
+            "redirect_urls": {
+                "return_url": "http://www.paypal.com/return",
+                "cancel_url": "http://www.paypal.com/cancel"
+            },
+            "experience_profile_id": "XP-QEMZ-CEC8-7G8G-8FAD",
+            "transactions": [
                 {
-                    amount: {
-                        total:    '10.00',
-                        currency: 'EUR'
-                    }
+                    "amount": {
+                        "total": "15.00",
+                        "currency": "USD"
+                    },
+                    "payment_options": {
+                        "allowed_payment_method": "INSTANT_FUNDING_SOURCE"
+                    },
+                    "item_list": {
+                        "shipping_address": {
+                            "city": "dada",
+                            "recipient_name": "Brian Robinson",
+                            "line2": "dada",
+                            "postal_code": "322222",
+                            "country_code": "GB",
+                            "line1": "dada",
+                            "state": "Manitoba"
+                        },
+                        "items": [
+                            {
+                                "quantity": "5",
+                                "sku": "1",
+                                "currency": "USD",
+                                "name": "hat",
+                                "description": "Brown hat.",
+                                "price": "3"
+                            }
+                        ]
+                    },
+                    "description": "The payment transaction description.",
+                    "invoice_number": "99232-invoice_id"
                 }
-            ]
+            ],
+            "intent": "sale",
+            "payer": {
+                "payment_method": "paypal",
+                "payer_info": {
+                    "shipping_address": {
+                        "phone": "32324343434343",
+                        "city": "dada",
+                        "postal_code": "322222",
+                        "country_code": "GB",
+                        "line1": "dada",
+                        "state": "Monitoba"
+                    },
+                    "last_name": "ch",
+                    "billing_address": {
+                        "phone": "32324343434343",
+                        "city": "data",
+                        "postal_code": "322222",
+                        "line2": "dada",
+                        "country_code": "GB",
+                        "line1": "dada",
+                        "state": "Manitoba"
+                    },
+                    "first_name": "daiston"
+                }
+            }
         };
         // END Setup
 
-        
+
         function payment() {
             // PART 1: Complete payment function to return or resolve a REST PayID
-                // Use the paypal library to make the REST call to create payment
-                // Look at the checkout.js docs or github docs.  https://github.com/paypal/paypal-checkout/blob/master/docs/button.md
-                // Use the following variables as arguments: environment, client, transaction
+            // Use the paypal library to make the REST call to create payment
+            // Look at the checkout.js docs or github docs.  https://github.com/paypal/paypal-checkout/blob/master/docs/button.md
+            // Use the following variables as arguments: environment, client, transaction
             return paypal.rest.payment.create(environment, client, transaction);
 
             // END PART 1
@@ -77,24 +144,24 @@
 
         function onAuthorize(data, actions) {
             // PART 3: Complete the onAuthorize callback
-                // Use the information passed to this function to execute the payment.
-                // Then call the handleResponse function.
-            
+            // Use the information passed to this function to execute the payment.
+            // Then call the handleResponse function.
+
             return actions
-                    .payment
-                    .execute()
-                    .then(handleResponse);
+                .payment
+                .execute()
+                .then(handleResponse);
             // END PART 3
         }
-    
+
         // PART 2: Create  the Button Component Integration
         // https://github.com/paypal/paypal-checkout/blob/master/docs/button.md
-            // Set the env property to environment variable
-            // Set the client property to the client variable
-            // In the Error event callback call the onError function
-            // In the Cancel event callback call the onCancel function
-            // Execute the payment function in the correct event callback.
-            // Execute onAuhorize function in the correct event callback 
+        // Set the env property to environment variable
+        // Set the client property to the client variable
+        // In the Error event callback call the onError function
+        // In the Cancel event callback call the onCancel function
+        // Execute the payment function in the correct event callback.
+        // Execute onAuhorize function in the correct event callback 
         // Make sure you configure so that there is a Pay Now button on paypal.com since we are executing the payment immediately
         // Make the button a medium, blue, rectangle
         // DOM id is '#paypal-button'
@@ -115,8 +182,9 @@
         }, '#paypal-button');
 
         // END PART 2
-        
+
     </script>
-    
+
 </body>
+
 </html>
