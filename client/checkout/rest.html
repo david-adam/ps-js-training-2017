@@ -143,8 +143,8 @@
         }
 
         function updateShippingInfo(data, actions) {
-        
-            const price = 15.00;
+            
+            const price = transaction.transactions[0].amount.total;
 
             function patchShippingCost(amount) {
                 const parsed_price = parseFloat(price);
