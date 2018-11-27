@@ -49,7 +49,7 @@
         }
 
         let client = {
-            sandbox: 'AVGigtRsEjPZdshjlvaiOJyVWu3OPrwwLNPwBcFi6FlgLw_RJbEEObWfkSkYwSe4FS1oba12dCRqFDyr'
+            sandbox: 'AZghgyLxWIW4Lh3XhVXBNl34yG5gm7y7pTgeDnCl8gsaN7PjxsTxeEGzDCGff9h_9sp7S3pyxFViFTdB'
         };
 
         let environment = 'sandbox';
@@ -175,13 +175,13 @@
                 return actions.reject();
             }
 
-            if (data.state != "CA") {
+            if (data.state != "CA" && data.state !="CALIFORNIA") {
                 shipping_amount = 5.00;
                 return patchShippingCost(shipping_amount);
             } else {
                 const shipping = data.amounts.shipping;
 
-                if(shipping && shipping.amount && parseFloat(shippiong.amount)!=0) {
+                if(shipping && shipping.amount && parseFloat(shipping.amount)!=0) {
                     return patchShippingCost(shipping_amount);
                 }
 

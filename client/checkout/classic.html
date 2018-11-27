@@ -58,7 +58,9 @@
 
         function updateShippingInfo(data, actions) {
         
-          const price = paypal.request.get('/paypal/classic/getexpresscheckout/' + data.token).then((result) => result.AMT);
+          let price = 50;
+           
+           //paypal.request.get('/paypal/classic/getexpresscheckout/' + data.token).then((result) => price = result.AMT);
 
           function patchShippingCost(amount) {
               const parsed_price = parseFloat(price);
@@ -107,7 +109,7 @@
             env: 'sandbox',
             payment: setExpressCheckout,
             onAuthorize: onAuthorize,
-            // onShippingChange: updateShippingInfo,
+            onShippingChange: updateShippingInfo,
             onCancel: onCancel,
             onError: onError,
             style: {
