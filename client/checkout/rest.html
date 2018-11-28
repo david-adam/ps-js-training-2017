@@ -51,18 +51,7 @@
         let client = {
             sandbox: 'AZghgyLxWIW4Lh3XhVXBNl34yG5gm7y7pTgeDnCl8gsaN7PjxsTxeEGzDCGff9h_9sp7S3pyxFViFTdB'
         };
-
         let environment = 'sandbox';
-        // var transaction = {
-        //     transactions: [
-        //         {
-        //             amount: {
-        //                 total:    '10.00',
-        //                 currency: 'EUR'
-        //             }
-        //         }
-        //     ]
-        // };
 
         let transaction = {
             "redirect_urls": {
@@ -106,7 +95,8 @@
                     "description": "The payment transaction description."
                 }
             ],
-            "intent": "sale",
+            "intent": "sale"
+            /*
             "payer": {
                 "payment_method": "paypal",
                 "payer_info": {
@@ -118,6 +108,7 @@
                         "line1": "dada",
                         "state": "Monitoba"
                     },
+                    "first_name": "daiston",
                     "last_name": "ch",
                     "billing_address": {
                         "phone": "32324343434343",
@@ -127,10 +118,9 @@
                         "country_code": "GB",
                         "line1": "dada",
                         "state": "Manitoba"
-                    },
-                    "first_name": "daiston"
+                    }
                 }
-            }
+            } */
         };
         // END Setup
 
