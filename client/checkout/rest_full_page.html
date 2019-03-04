@@ -95,8 +95,7 @@
                     "description": "The payment transaction description."
                 }
             ],
-            "intent": "sale",
-            "note_to_payer": "Thanks for doing business with us."
+            "intent": "sale"
             /*
             "payer": {
                 "payment_method": "paypal",
@@ -136,6 +135,50 @@
             // END PART 1
         }
 
+        function updateShippingInfo(data, actions) {
+            
+            const price = transaction.transactions[0].amount.total;
+
+            function patchShippingCost(amount) {
+                const parsed_price = parseFloat(price);
+                const parsed_shipping = parseFloat(amount);
+                const final_total = (parsed_price + parsed_shipping).toString();
+
+                return actions.payment.patch([
+                    {
+                        op: 'replace',
+                        path: '/transactions/0/amount',
+                        value: {
+                            total: final_total,
+                            currency: 'USD',
+                            details: {
+                                subtotal: price,
+                                shipping: amount
+                            }
+                        }
+                    }
+                ]);
+            }
+
+            let shipping_amount = 0.00;
+            if (data.country !=="US") {
+                return actions.reject();
+            }
+
+            if (data.state != "CA" && data.state !="CALIFORNIA") {
+                shipping_amount = 5.00;
+                return patchShippingCost(shipping_amount);
+            } else {
+                const shipping = data.amounts.shipping;
+
+                if(shipping && shipping.amount && parseFloat(shipping.amount)!=0) {
+                    return patchShippingCost(shipping_amount);
+                }
+
+                return actions.resolve();
+            }
+        }
+
         function onAuthorize(data, actions) {
             // PART 3: Complete the onAuthorize callback
             // Use the information passed to this function to execute the payment.
@@ -166,6 +209,7 @@
             onError: onError,
             onCancel: onCancel,
             payment: payment,
+            onShippingChange: updateShippingInfo,
             onAuthorize: onAuthorize,
             commit: true,
             style: {

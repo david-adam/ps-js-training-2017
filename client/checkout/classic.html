@@ -56,60 +56,10 @@
             //return doExpressCheckout(data, actions);
         }
 
-        function updateShippingInfo(data, actions) {
-        
-          let price = 50;
-           
-           //paypal.request.get('/paypal/classic/getexpresscheckout/' + data.token).then((result) => price = result.AMT);
-
-          function patchShippingCost(amount) {
-              const parsed_price = parseFloat(price);
-              const parsed_shipping = parseFloat(amount);
-              const total = (parsed_price + parsed_shipping).toString();
-
-              return actions.payment.patch([
-                  {
-                      op: 'replace',
-                      path: '/transactions/0/amount',
-                      value: {
-                          total,
-                          currency: 'USD',
-                          details: {
-                              subtotal: price,
-                              shipping: amount
-                          }
-                      }
-                  }
-              ]);
-          }
-
-          let shipping_amount = 0.00;
-          if (data.country !=="US") {
-              return actions.reject();
-          }
-
-          if (data.state != "CA") {
-              shipping_amount = 5.00;
-              return patchShippingCost(shipping_amount);
-          } else {
-              const shipping = data.amounts.shipping;
-
-              if(shipping && shipping.amount && parseFloat(shippiong.amount)!=0) {
-                   return patchShippingCost(shipping_amount);
-              }
-
-              return actions.resolve();
-          }
-
-          
-
-        }
-
         paypal.Button.render({
             env: 'sandbox',
             payment: setExpressCheckout,
             onAuthorize: onAuthorize,
-            onShippingChange: updateShippingInfo,
             onCancel: onCancel,
             onError: onError,
             style: {
