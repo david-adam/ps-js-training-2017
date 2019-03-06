@@ -89,6 +89,7 @@
                 // Return the response from the function call
                 return paypal.request.get('/paypal/classic/setexpresscheckout')
                 .then(function(data){
+                    console.log(data);
                     if (data.error) {
                         throw data.error;
                     } else {
