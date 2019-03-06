@@ -26,7 +26,7 @@ export default function(router) {
       //PAYMENTREQUEST_0_SHIPPINGAMT: 5,
       CALLBACK: instantUpdateURL,
       CALLBACKTIMEOUT: callbackTimeout,
-      L_SHIPPINGOPTIONISDEFAULT0: true,
+      L_SHIPPINGOPTIONISDEFAULT0: false,
       L_SHIPPINGOPTIONNAME0: "Shipping Option normal default",
       L_SHIPPINGOPTIONAMOUNT0: 5,
       L_SHIPPINGOPTIONISDEFAULT1: false,
