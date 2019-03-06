@@ -1,8 +1,15 @@
 export default function(router) {
   router.post("/", (req, res) => {
-    console.log(req);
-    const payload = {};
-
+    let payload = {};
+    if (req.body.SHIPTOSTATE == "CA" || req.body.SHIPTOSTATE == "CALIFORNIA") {
+      payload = {
+        METHOD: "CallbackResponse",
+        CALLBACKVERSION: req.body.CALLBACKVERSION,
+        L_SHIPPINGOPTIONISDEFAULT0: false,
+        L_SHIPPINGOPTIONNAME1: "Shipping Option 1 NON-default",
+        L_SHIPPINGOPTIONAMOUNT0: 6
+      };
+    }
     res.json(payload);
   });
 }
