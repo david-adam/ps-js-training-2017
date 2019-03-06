@@ -2,7 +2,7 @@ export default function(router) {
   router.get("/", (req, res) => {
     let paypal = req.app.kraken.get("paypalClassic");
     const instantUpdateURL =
-      "http://ppcheckout.herokuapp.com/paypal/classic/instantupdate";
+      "https://ppcheckout.herokuapp.com/paypal/classic/instantupdate";
     const callbackTimeout = 3;
 
     let nvpParams = {
