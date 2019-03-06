@@ -1,0 +1,40 @@
+{
+  "paypalClassicConfig": {
+    "username": "david.g.adam+seller_api1.gmail.com",
+    "password": "7SUGWB8X26PBV9JL",
+    "signature": "A3Y1IabViDnLM.hMAUvK-kr83JP5ADThMw0vPnRpVJbGalmwYQosAJLO",
+    "live": false
+  },
+  "braintreeConfig": {
+    "environment": "Sandbox",
+    "merchantId": "wkqn2r5yxbvdgs4r",
+    "publicKey": "m3zd8fgjyjw2p7yr",
+    "privateKey": "ae3a67109fef1965a922d89553962e80"
+  },
+  "middleware": {
+    "appsec": {
+      "module": {
+        "arguments": [
+          {
+            "csrf": false,
+            "xframe": "SAMEORIGIN",
+            "p3p": false,
+            "csp": false
+          }
+        ]
+      }
+    },
+    "router": {
+      "module": {
+        "arguments": [
+          {
+            "directory": "path:./routes"
+          }
+        ]
+      }
+    }
+  },
+  "express": {
+    "json spaces": 2
+  }
+}

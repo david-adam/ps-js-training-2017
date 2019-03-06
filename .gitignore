@@ -41,4 +41,3 @@ jspm_packages
 
 #App Specific
 dist/
-src/config/config.json
