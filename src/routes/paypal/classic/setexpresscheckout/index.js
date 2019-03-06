@@ -31,7 +31,7 @@ export default function(router) {
       L_SHIPPINGOPTIONAMOUNT0: 5,
       L_SHIPPINGOPTIONISDEFAULT1: false,
       L_SHIPPINGOPTIONNAME1: "Shipping Option 1 NON-default",
-      L_SHIPPINGOPTIONAMOUNT1: 6,
+      L_SHIPPINGOPTIONAMOUNT1: 10,
       // PAYMENTREQUEST_0_SHIPTONAME: 'Boonserm Phinphirom',
       // PAYMENTREQUEST_0_SHIPTOSTREET: '205/280 Pattanakan 65',
       // //PAYMENTREQUEST_0_SHIPTOSTREET2: 'Rama 4 Kluaynamthai, Khlong Toei',
