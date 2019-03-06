@@ -4,12 +4,9 @@ export default function(router) {
     if (req.body.SHIPTOSTATE == "CA" || req.body.SHIPTOSTATE == "CALIFORNIA") {
       payload = [
         "METHOD=CallbackResponse",
-        "L_SHIPPINGOPTIONNAME0=Shipping Option 0 default",
-        "L_SHIPPINGOPTIONAMOUNT0=5",
-        "L_SHIPPINGOPTIONISDEFAULT0=false",
-        "L_SHIPPINGOPTIONNAME1=Shipping Option 1 NON-default",
-        "L_SHIPPINGOPTIONAMOUNT1=10",
-        "L_SHIPPINGOPTIONISDEFAULT1=true"
+        "L_SHIPPINGOPTIONNAME0=Shipping Option expensive NON-default",
+        "L_SHIPPINGOPTIONAMOUNT0=10",
+        "L_SHIPPINGOPTIONISDEFAULT0=true"
       ].join("&");
     }
 
