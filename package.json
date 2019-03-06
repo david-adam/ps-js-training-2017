@@ -10,8 +10,7 @@
     "build:watch": "npm run clean && babel src -d dist --copy-files",
     "start": "npm run build && node dist/index.js",
     "start:dev": "supervisor -w src/ -- -r 'babel-register' src/index.js",
-    "preinstall": "npm install -g pm2 && pm2 install pm2-logrotate",
-    "postinstall": "npm run build"
+    "preinstall": "npm install -g pm2 && pm2 install pm2-logrotate"
   },
   "repository": {
     "type": "git",
@@ -25,8 +24,10 @@
   "homepage": "https://github.com/trainerbill/ps-js-training#readme",
   "dependencies": {
     "braintree": "^2.15.0",
+    "connect-mongo": "^2.0.3",
     "express": "^4.16.4",
     "kraken-js": "^2.1.0",
+    "mongoose": "^5.4.17",
     "paypal-classic-api": "^1.2.1",
     "paypal-rest-sdk": "^1.7.1",
     "supervisor": "^0.12.0"
@@ -36,5 +37,6 @@
     "@types/kraken-js": "^2.2.3",
     "babel-cli": "^6.23.0",
     "babel-preset-env": "^1.1.8"
-  }
+  },
+  "heroku-run-build-script": true
 }
