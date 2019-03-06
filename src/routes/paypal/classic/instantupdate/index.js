@@ -1,5 +1,5 @@
 export default function(router) {
-  router.get("/", (req, res) => {
+  router.post("/", (req, res) => {
     console.log(req);
     const payload = {};
 
