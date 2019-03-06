@@ -11,7 +11,7 @@ export default function(router) {
       CANCELURL:
         "http://ppcheckout.herokuapp.com/checkout/classic.html?Cancelled",
       MAXAMT: 70,
-      PAYMENTREQUEST_0_AMT: 50.0,
+      PAYMENTREQUEST_0_AMT: 55.0,
       PAYMENTREQUEST_0_ITEMAMT: 50.0,
       L_PAYMENTREQUEST_0_NAME0: "Item No1",
       L_PAYMENTREQUEST_0_DESC0: "The best goods in the world",
@@ -23,7 +23,7 @@ export default function(router) {
       L_PAYMENTREQUEST_0_NUMBER1: "5678",
       L_PAYMENTREQUEST_0_AMT1: 25.0,
       L_PAYMENTREQUEST_0_QTY1: 1,
-      //PAYMENTREQUEST_0_SHIPPINGAMT: 5,
+      PAYMENTREQUEST_0_SHIPPINGAMT: 5,
       CALLBACK: instantUpdateURL,
       CALLBACKTIMEOUT: callbackTimeout,
       L_SHIPPINGOPTIONISDEFAULT0: false,
