@@ -5,7 +5,7 @@ export default function(router) {
       payload = [
         "METHOD=CallbackResponse",
         "L_SHIPPINGOPTIONNAME0=Shipping Option expensive NON-default",
-        "L_SHIPPINGOPTIONAMOUNT0=10",
+        "L_SHIPPINGOPTIONAMOUNT0=20",
         "L_SHIPPINGOPTIONISDEFAULT0=true"
       ].join("&");
     }
