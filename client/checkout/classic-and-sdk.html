@@ -49,7 +49,7 @@
         }
 
         function onAuthorize(data, actions) {
-            return paypal.Promise.all([ 
+            return Promise.all([ 
                 getExpressCheckout(data, actions), 
                 setupExecute(data, actions)
             //    doExpressCheckout(data, actions)
