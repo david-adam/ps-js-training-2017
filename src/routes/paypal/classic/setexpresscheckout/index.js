@@ -6,10 +6,8 @@ export default function(router) {
     const callbackTimeout = 3;
 
     let nvpParams = {
-      RETURNURL:
-        "http://ppcheckout.herokuapp.com/checkout/classic.html?Successed",
-      CANCELURL:
-        "http://ppcheckout.herokuapp.com/checkout/classic.html?Cancelled",
+      RETURNURL: "https://www.paypal.com/checkoutnow/error",
+      CANCELURL: "https://www.paypal.com/checkoutnow/error",
       MAXAMT: 70,
       PAYMENTREQUEST_0_AMT: 50.0,
       PAYMENTREQUEST_0_ITEMAMT: 50.0,
