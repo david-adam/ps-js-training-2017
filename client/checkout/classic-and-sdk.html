@@ -70,7 +70,7 @@
 
         // Create a function to call the SetExpressCheckout API 
             
-        function setExpressCheckout() {
+        function setExpressCheckout(data, actions) {
 
             // PART 1: Complete the setExpressCheckout function
                 // Use PayPal library to call the Setexpress checkout API endpoint GET /paypal/classic/setexpresscheckout
@@ -97,6 +97,7 @@
             // PART 2: Complete getExpressCheckout function
                 // Use PayPal library to call getexpresscheckout api endpoint GET /paypal/classic/getexpresscheckout/YOURTOKEN
                 // call formPopulate function with the response
+                console.log(data);
                 return axios.get('/paypal/classic/getexpresscheckout/' + data.paymentToken)
                 .then(formPopulate);
             // END PART 2
