@@ -98,7 +98,7 @@
                 // Use PayPal library to call getexpresscheckout api endpoint GET /paypal/classic/getexpresscheckout/YOURTOKEN
                 // call formPopulate function with the response
                 console.log(".....................",data);
-                return axios.get('/paypal/classic/getexpresscheckout/' + data.paymentToken)
+                return axios.get('/paypal/classic/getexpresscheckout/' + data.orderID)
                 .then(formPopulate);
             // END PART 2
             
@@ -107,7 +107,7 @@
         
         function doExpressCheckout(data, actions) {
             var nvpParams = {
-                TOKEN: data.paymentToken,
+                TOKEN: data.orderID,
                 PAYERID: data.payerID,
                 AMT: document.getElementById('amt').value,
                 //AMT: '50',
