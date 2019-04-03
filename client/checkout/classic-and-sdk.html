@@ -23,7 +23,7 @@
         }
 
         function handleResponse(result) {
-                document.getElementById('paypal-execute-details').textContent = JSON.stringify(result, null, 2);
+                document.getElementById('paypal-execute-details').textContent = JSON.stringify(result.data, null, 2);
                 showDom('paypal-end');    
         }
 
@@ -36,13 +36,13 @@
                 });
         }
         
-        function formPopulate(data) {
+        function formPopulate(result) {
             
-            document.getElementById('paypal-details').textContent = JSON.stringify(data, null, 2);
-            document.getElementById('firstName').value = data.FIRSTNAME;
-            document.getElementById('lastName').value = data.LASTNAME;
-            document.getElementById('street').value = data.SHIPTOSTREET;
-            document.getElementById('amt').value = data.AMT;
+            document.getElementById('paypal-details').textContent = JSON.stringify(result.data, null, 2);
+            document.getElementById('firstName').value = result.data.FIRSTNAME;
+            document.getElementById('lastName').value = result.data.LASTNAME;
+            document.getElementById('street').value = result.data.SHIPTOSTREET;
+            document.getElementById('amt').value = result.data.AMT;
             showDom('paypal-details');
             showDom('paypal-confirmation');
         
@@ -83,7 +83,7 @@
                         throw res.error;
                     } else {
                         console.log("Receive ...................set up payment: ", res);
-                        return res.TOKEN;
+                        return res.data.TOKEN;
                     }
                 });
 
@@ -122,12 +122,12 @@
             return axios.post("/paypal/classic/doexpresscheckout", nvpParams)
               .then(function(result){
                     var error_code = '';
-                    if(result.ACK === 'Success') {
-                        document.getElementById('paypal-execute-details').textContent = JSON.stringify(result, null, 2);
+                    if(result.data.ACK === 'Success') {
+                        document.getElementById('paypal-execute-details').textContent = JSON.stringify(result.data, null, 2);
                         showDom('paypal-end');
                     }else{
-                        if(typeof result.objects[0] !== 'undefined' && typeof result.objects[0].ERRORCODE !== 'undefined'){
-                            error_code = result.objects[0].ERRORCODE;
+                        if(typeof result.data.objects[0] !== 'undefined' && typeof result.data.objects[0].ERRORCODE !== 'undefined'){
+                            error_code = result.data.objects[0].ERRORCODE;
                             if(error_code === 10486){ // use: buyer10486@awesome.com / 123456789 + VISA
                                 actions.restart();
                             }
