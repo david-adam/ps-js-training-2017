@@ -12,7 +12,6 @@
     <script src="https://www.paypal.com/sdk/js?client-id=AZghgyLxWIW4Lh3XhVXBNl34yG5gm7y7pTgeDnCl8gsaN7PjxsTxeEGzDCGff9h_9sp7S3pyxFViFTdB&debug=true&commit=false" data-version-4></script>
 
     <script>
-        // Exercise Setup
         function onCancel() {
             showDom('paypal-cancel');
         }
@@ -66,16 +65,13 @@
 
 
 
-        // END Setup
-
         // Create a function to call the SetExpressCheckout API 
             
         function setExpressCheckout(data, actions) {
 
             // PART 1: Complete the setExpressCheckout function
-                // Use PayPal library to call the Setexpress checkout API endpoint GET /paypal/classic/setexpresscheckout
-                // In the then callback return the TOKEN property of the response
-                // Return the response from the function call
+                // Call the Setexpress checkout API endpoint GET /paypal/classic/setexpresscheckout
+                // Return a promise includes the TOKEN property of the response
                 return axios.get('/paypal/classic/setexpresscheckout')
                 .then(function(res){
                     console.log(res);
@@ -95,7 +91,7 @@
         function getExpressCheckout(data, actions) {
 
             // PART 2: Complete getExpressCheckout function
-                // Use PayPal library to call getexpresscheckout api endpoint GET /paypal/classic/getexpresscheckout/YOURTOKEN
+                // Call getexpresscheckout api endpoint GET /paypal/classic/getexpresscheckout/YOURTOKEN
                 // call formPopulate function with the response
                 console.log(".....................",data);
                 return axios.get('/paypal/classic/getexpresscheckout/' + data.orderID)
@@ -116,7 +112,7 @@
 
             // PART 3: Complete doExpressCheckout function
                 // Set nvpParams properties to the correct properties in data
-                // Use paypal library to call doexpresscheckout api endpoint POST /paypal/classic/doexpresscheckout
+                // Call doexpresscheckout api endpoint POST /paypal/classic/doexpresscheckout
                     // Send the nvpParams variable with the api call.
                     // Then call the handleResponse function with the response from the api call.
             
