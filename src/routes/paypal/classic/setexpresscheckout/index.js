@@ -8,7 +8,7 @@ export default function(router) {
     let nvpParams = {
       RETURNURL: "https://www.paypal.com/checkoutnow/error",
       CANCELURL: "https://www.paypal.com/checkoutnow/error",
-      MAXAMT: 70,
+      MAXAMT: 80,
       PAYMENTREQUEST_0_AMT: 53.0,
       PAYMENTREQUEST_0_ITEMAMT: 50.0,
       PAYMENTREQUEST_0_SHIPPINGAMT: 0,
