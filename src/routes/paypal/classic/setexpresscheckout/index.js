@@ -9,7 +9,7 @@ export default function(router) {
       RETURNURL: "https://www.paypal.com/checkoutnow/error",
       CANCELURL: "https://www.paypal.com/checkoutnow/error",
       MAXAMT: 70,
-      PAYMENTREQUEST_0_AMT: 53.0,
+      PAYMENTREQUEST_0_AMT: 50.0,
       PAYMENTREQUEST_0_ITEMAMT: 50.0,
       PAYMENTREQUEST_0_SHIPPINGAMT: 0,
       PAYMENTREQUEST_0_INSURANCEAMT: 3.0,
