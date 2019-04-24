@@ -13,5 +13,7 @@ export default function(router) {
     }
 
     res.send(payload);
+
+    // console.log(req.body);
   });
 }
