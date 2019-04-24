@@ -24,8 +24,8 @@ export default function(router) {
       L_PAYMENTREQUEST_0_NUMBER1: "5678",
       L_PAYMENTREQUEST_0_AMT1: 25.0,
       L_PAYMENTREQUEST_0_QTY1: 1,
-      CALLBACK: instantUpdateURL,
-      CALLBACKTIMEOUT: callbackTimeout,
+      //CALLBACK: instantUpdateURL,
+      //CALLBACKTIMEOUT: callbackTimeout,
       L_SHIPPINGOPTIONISDEFAULT0: true,
       L_SHIPPINGOPTIONNAME0: "Shipping Option normal default",
       L_SHIPPINGOPTIONAMOUNT0: 0,
@@ -60,7 +60,6 @@ export default function(router) {
         console.log(err);
         res.json(err);
       } else {
-        console.log(response);
         res.json(response);
       }
     });

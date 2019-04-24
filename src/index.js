@@ -32,8 +32,7 @@ let krakenOpts = {
   }
 };
 
-const mongoURI =
-  "mongodb://david:Nerio#7167222@ds361085.mlab.com:61085/ppcheckout-demo";
+const mongoURI = "mongodb://127.0.0.1:27017/ppcheckout-demo";
 
 mongoose.Promise = global.Promise;
 mongoose

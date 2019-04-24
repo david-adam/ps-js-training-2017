@@ -56,64 +56,40 @@
             //return doExpressCheckout(data, actions);
         }
 
-        paypal.Button.render({
-            env: 'sandbox',
-            payment: setExpressCheckout,
-            onAuthorize: onAuthorize,
-            onCancel: onCancel,
-            onError: onError,
-            style: {
-                size: 'medium',
-                color: 'gold',
-                shape: 'rect'
-            },
-
-            funding: {
-                disallowed: [ paypal.FUNDING.CREDIT ]
-            },
-
-            commit: true
-        }, '#paypal-button');
-
-
-
-        // END Setup
-
         // Create a function to call the SetExpressCheckout API 
             
         function setExpressCheckout() {
-
             // PART 1: Complete the setExpressCheckout function
-                // Use PayPal library to call the Setexpress checkout API endpoint GET /paypal/classic/setexpresscheckout
-                // In the then callback return the TOKEN property of the response
-                // Return the response from the function call
-                return paypal.request.get('/paypal/classic/setexpresscheckout')
-                .then(function(data){
-                    console.log(data);
-                    if (data.error) {
-                        throw data.error;
-                    } else {
-                        return data.TOKEN;
-                    }
-                });
+            // Use PayPal library to call the Setexpress checkout API endpoint GET /paypal/classic/setexpresscheckout
+            // In the then callback return the TOKEN property of the response
+            // Return the response from the function call
+            return paypal.request.get('/paypal/classic/setexpresscheckout')
+            .then(function(data){
+                console.log(data);
+                if (data.error) {
+                    throw data.error;
+                } else {
+                    return data.TOKEN;
+                }
+            });
 
 
-            // END PART 1
-            
+        // END PART 1
+
         }
-            
+
         function getExpressCheckout(data, actions) {
 
-            // PART 2: Complete getExpressCheckout function
-                // Use PayPal library to call getexpresscheckout api endpoint GET /paypal/classic/getexpresscheckout/YOURTOKEN
-                // call formPopulate function with the response
-                return paypal.request.get('/paypal/classic/getexpresscheckout/' + data.paymentToken)
-                .then(formPopulate);
-            // END PART 2
-            
+        // PART 2: Complete getExpressCheckout function
+            // Use PayPal library to call getexpresscheckout api endpoint GET /paypal/classic/getexpresscheckout/YOURTOKEN
+            // call formPopulate function with the response
+            return paypal.request.get('/paypal/classic/getexpresscheckout/' + data.paymentToken)
+            .then(formPopulate);
+        // END PART 2
+
         }
 
-        
+
         function doExpressCheckout(data, actions) {
             var nvpParams = {
                 TOKEN: data.paymentToken,
@@ -124,13 +100,13 @@
             };
 
             // PART 3: Complete doExpressCheckout function
-                // Set nvpParams properties to the correct properties in data
-                // Use paypal library to call doexpresscheckout api endpoint POST /paypal/classic/doexpresscheckout
-                    // Send the nvpParams variable with the api call.
-                    // Then call the handleResponse function with the response from the api call.
-            
+            // Set nvpParams properties to the correct properties in data
+            // Use paypal library to call doexpresscheckout api endpoint POST /paypal/classic/doexpresscheckout
+            // Send the nvpParams variable with the api call.
+            // Then call the handleResponse function with the response from the api call.
+
             return paypal.request.post("/paypal/classic/doexpresscheckout", nvpParams)
-              .then(function(result){
+            .then(function(result){
                     var error_code = '';
                     if(result.ACK === 'Success') {
                         document.getElementById('paypal-execute-details').textContent = JSON.stringify(result, null, 2);
@@ -143,19 +119,46 @@
                             }
                         }
                     }
-              });
-            
+            });
+
             /*
             return paypal.request.post("/paypal/classic/doexpresscheckout", nvpParams)
-              .then(handleResponse);
+            .then(handleResponse);
             */
 
             // END PART 3
         }
 
-        
-        
+        document.addEventListener("DOMContentLoaded",() => {
+            document.querySelector("#paypal-button").style.display = "none";
+            
+            paypal.Button.render({
+                env: 'sandbox',
+                payment: setExpressCheckout,
+                onAuthorize: onAuthorize,
+                onCancel: onCancel,
+                onError: onError,
+                style: {
+                    size: 'medium',
+                    color: 'gold',
+                    shape: 'rect'
+                },
 
+                funding: {
+                    disallowed: [ paypal.FUNDING.CREDIT ]
+                },
+
+                commit: true
+            }, '#paypal-button');
+
+           
+            document.querySelector("#showSPB").addEventListener("click", () =>{
+
+                
+                document.querySelector("#paypal-button").style.display = "block";
+            })
+        });
+        // END Setup
     </script>
     <div id="paypal-error" style="display:none">
         <h2>Whoopsie Daisy</h2>
@@ -196,6 +199,6 @@
         <pre id="paypal-execute-details"></pre>
     </div>
     </div>
-    <a href="index.html">Go Back</a>
+    <a href="index.html">Go Back</a><button id="showSPB">Show PayPal</button>
 </body>
 </html>
