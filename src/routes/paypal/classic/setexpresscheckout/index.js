@@ -50,6 +50,7 @@ export default function(router) {
       PAYMENTREQUEST_0_CURRENCYCODE: "USD",
       PAYMENTREQUEST_0_INVNUM: String(Date.now()),
       ADDROVERRIDE: "0",
+      LANDINGPAGE: "Billing",
       //SOLUTIONTYPE: 'Sole',
       VERSION: "124",
       NOSHIPPING: "2"
