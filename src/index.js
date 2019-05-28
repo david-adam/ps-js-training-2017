@@ -4,9 +4,6 @@ import kraken from "kraken-js";
 import braintree from "braintree";
 import paypal from "paypal-rest-sdk";
 import PayPal from "paypal-classic-api";
-import mongoose from "mongoose";
-import session from "express-session";
-const MongoStore = require("connect-mongo")(session);
 
 let app = express();
 
@@ -32,35 +29,9 @@ let krakenOpts = {
   }
 };
 
-const mongoURI = "mongodb://127.0.0.1:27017/ppcheckout-demo";
-
-mongoose.Promise = global.Promise;
-mongoose
-  .connect(mongoURI, {
-    useNewUrlParser: true
-  })
-  .then(() => {
-    console.log("MongoDB connected.");
-  })
-  .catch(err => {
-    console.log(err);
-  });
-
 app.use(kraken(krakenOpts));
 
 app.use(express.static(path.resolve(__dirname, "../client")));
-
-app.use(
-  session({
-    secret: "d7xtdz2t2ftse76d763h",
-    resave: true,
-    saveUninitialized: true,
-    store: new MongoStore({
-      mongooseConnection: mongoose.connection,
-      collection: "ppcheckoutsessions"
-    })
-  })
-);
 
 let port = process.env.PORT || 5129;
 //let port = 8088;
