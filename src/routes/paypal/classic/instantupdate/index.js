@@ -1,6 +1,7 @@
 export default function(router) {
   router.post("/", (req, res) => {
     let payload = "";
+    console.log(req.body);
     if (req.body.SHIPTOSTATE == "CA" || req.body.SHIPTOSTATE == "CALIFORNIA") {
       payload = [
         "METHOD=CallbackResponse",
