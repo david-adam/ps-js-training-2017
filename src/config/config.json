@@ -1,8 +1,8 @@
 {
   "paypalClassicConfig": {
-    "username": "david.g.adam+seller_api1.gmail.com",
-    "password": "7SUGWB8X26PBV9JL",
-    "signature": "A3Y1IabViDnLM.hMAUvK-kr83JP5ADThMw0vPnRpVJbGalmwYQosAJLO",
+    "username": "david.g.adam_api1.gmail.com",
+    "password": "7SP4Z55B2XYC3L45",
+    "signature": "ArFZ5DF1pEd4euI2jpvbEwe5Q4BiAGpqoZGTYQ0-4AoTI0KRdmafK.ue",
     "live": true
   },
   "braintreeConfig": {

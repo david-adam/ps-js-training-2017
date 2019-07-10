@@ -30,12 +30,13 @@ let krakenOpts = {
       signature: process.env.signature
     };
 
-    let paypalClassic;
-    if (!classicConfig.live) {
-      paypalClassic = new PayPal(classicConfig);
-    } else {
-      paypalClassic = new PayPal(JSON.stringify(prodClassicConfig));
+    if (classicConfig.live) {
+      classicConfig.live = prodClassicConfig.live;
+      classicConfig.usernmae = prodClassicConfig.usernmae;
+      classicConfig.password = prodClassicConfig.password;
+      classicConfig.signature = prodClassicConfig.signature;
     }
+    let paypalClassic = new PayPal(classicConfig);
     config.set('paypalClassic', paypalClassic);
 
     callback(null, config);
