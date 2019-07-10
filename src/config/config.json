@@ -3,7 +3,7 @@
     "username": "david.g.adam+seller_api1.gmail.com",
     "password": "7SUGWB8X26PBV9JL",
     "signature": "A3Y1IabViDnLM.hMAUvK-kr83JP5ADThMw0vPnRpVJbGalmwYQosAJLO",
-    "live": true
+    "live": false
   },
   "braintreeConfig": {
     "environment": "Sandbox",

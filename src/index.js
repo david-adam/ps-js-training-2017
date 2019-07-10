@@ -32,10 +32,8 @@ let krakenOpts = {
 
     let paypalClassic;
     if (!classicConfig.live) {
-      console.log(classicConfig);
       paypalClassic = new PayPal(classicConfig);
     } else {
-      console.log(prodClassicConfig);
       paypalClassic = new PayPal(prodClassicConfig);
     }
     config.set('paypalClassic', paypalClassic);
