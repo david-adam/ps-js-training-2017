@@ -22,12 +22,14 @@ let krakenOpts = {
     config.set('paypalRest', paypal);
 
     let classicConfig = config.get('paypalClassicConfig');
+    console.log(classicConfig);
     let prodClassicConfig = {
       live: true,
-      usernmae: process.env.username,
-      password: process.env.password,
-      signature: process.env.signature
+      usernmae: `${process.env.username}`,
+      password: `${process.env.password}`,
+      signature: `${process.env.signature}`
     };
+    console.log(prodClassicConfig);
     let paypalClassic;
     if (!classicConfig.live) {
       paypalClassic = new PayPal(classicConfig);
