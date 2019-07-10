@@ -95,7 +95,7 @@
                 TOKEN: data.paymentToken,
                 PAYERID: data.payerID,
                 AMT: document.getElementById('amt').value,
-                //AMT: '50',
+                //AMT: '80',
                 PAYMENTACTION: data.intent
             };
 
@@ -133,7 +133,7 @@
             document.querySelector("#paypal-button").style.display = "none";
             
             paypal.Button.render({
-                env: 'sandbox',
+                env: 'production',
                 payment: setExpressCheckout,
                 onAuthorize: onAuthorize,
                 onCancel: onCancel,
