@@ -11,6 +11,8 @@ export default function(router) {
       //MAXAMT: 120,
       PAYMENTREQUEST_0_AMT: 1.0,
       PAYMENTREQUEST_0_ITEMAMT: 1.0,
+      REQCONFIRMSHIPPING: 1,
+      PAYMENTREQUEST_0_PAYMENTACTION: 'SALE',
       //PAYMENTREQUEST_0_SHIPPINGAMT: 0,
       //PAYMENTREQUEST_0_INSURANCEAMT: 3.0,
       //PAYMENTREQUEST_0_INSURANCEOPTIONOFFERED: false,
@@ -50,7 +52,7 @@ export default function(router) {
       PAYMENTREQUEST_0_CURRENCYCODE: 'USD',
       PAYMENTREQUEST_0_INVNUM: String(Date.now()),
       ADDROVERRIDE: '0',
-      LANDINGPAGE: 'Billing',
+      LANDINGPAGE: 'Login',
       //SOLUTIONTYPE: 'Sole',
       VERSION: '124',
       NOSHIPPING: '2'

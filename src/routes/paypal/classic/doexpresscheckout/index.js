@@ -7,7 +7,7 @@ export default function(router) {
       PAYERID: req.body.PAYERID,
       AMT: req.body.AMT,
       VERSION: '124',
-      PAYMENTACTION: req.body.PAYMENTACTION,
+      PAYMENTREQUEST_0_PAYMENTACTION: 'SALE',
       PAYMENTREQUEST_0_SHIPTONAME: 'Piyachat Saichan',
       PAYMENTREQUEST_0_SHIPTOSTREET: '368 S Main St Rear',
       PAYMENTREQUEST_0_SHIPTOSTREET2: '2508 Dolor. Av.',
