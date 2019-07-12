@@ -133,7 +133,7 @@
             document.querySelector("#paypal-button").style.display = "none";
             
             paypal.Button.render({
-                env: 'production',
+                env: 'sandbox',
                 payment: setExpressCheckout,
                 onAuthorize: onAuthorize,
                 onCancel: onCancel,
