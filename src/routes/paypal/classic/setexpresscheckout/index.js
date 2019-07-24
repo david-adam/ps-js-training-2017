@@ -58,7 +58,7 @@ export default function(router) {
       ADDROVERRIDE: '0',
       ALLOWNOTE: '0',
       SOLUTIONTYPE: 'Sole',
-      LANDINGPAGE: 'Login',
+      LANDINGPAGE: 'Billing',
       REQCONFIRMSHIPPING: '1',
       //SOLUTIONTYPE: 'Sole',
       VERSION: '124',
