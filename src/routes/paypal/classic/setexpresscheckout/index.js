@@ -1,19 +1,19 @@
 export default function(router) {
   router.get('/', (req, res) => {
     let paypal = req.app.kraken.get('paypalClassic');
-    // const instantUpdateURL =
-    //   'https://ppcheckout.herokuapp.com/paypal/classic/instantupdate';
-    // const callbackTimeout = 3;
+    const instantUpdateURL =
+      'https://ppcheckout.herokuapp.com/paypal/classic/instantupdate';
+    const callbackTimeout = 5;
 
     let nvpParams = {
       RETURNURL: 'https://www.paypal.com/checkoutnow/error',
       CANCELURL: 'https://www.paypal.com/checkoutnow/error',
-      //MAXAMT: 120,
+      MAXAMT: 120,
       PAYMENTREQUEST_0_AMT: 9.41,
       PAYMENTREQUEST_0_DESC: 'Test PAYMENTREQUEST_n_DESC',
       PAYMENTREQUEST_0_ITEMAMT: 9.41,
-      PAYMENTREQUEST_0_NOTIFYURL:
-        'https://94bd7ced.ngrok.io/pptest/ipn/listener.php',
+      // PAYMENTREQUEST_0_NOTIFYURL:
+      //   'https://94bd7ced.ngrok.io/pptest/ipn/listener.php',
       PAYMENTREQUEST_0_PAYMENTACTION: 'SALE',
       PAYMENTREQUEST_0_SHIPPINGAMT: 0,
       //PAYMENTREQUEST_0_INSURANCEAMT: 3.0,
@@ -30,14 +30,14 @@ export default function(router) {
       // L_PAYMENTREQUEST_0_NUMBER1: '5678',
       // L_PAYMENTREQUEST_0_AMT1: 0.5,
       // L_PAYMENTREQUEST_0_QTY1: 1,
-      // CALLBACK: instantUpdateURL,
-      // CALLBACKTIMEOUT: callbackTimeout,
-      // L_SHIPPINGOPTIONISDEFAULT0: true,
-      // L_SHIPPINGOPTIONNAME0: 'Shipping Option normal default',
-      // L_SHIPPINGOPTIONAMOUNT0: 0,
-      // L_SHIPPINGOPTIONISDEFAULT1: false,
-      // L_SHIPPINGOPTIONNAME1: 'Shipping Option expensive NON-default',
-      // L_SHIPPINGOPTIONAMOUNT1: 10,
+      CALLBACK: instantUpdateURL,
+      CALLBACKTIMEOUT: callbackTimeout,
+      L_SHIPPINGOPTIONISDEFAULT0: true,
+      L_SHIPPINGOPTIONNAME0: 'Shipping Option normal default',
+      L_SHIPPINGOPTIONAMOUNT0: 0,
+      L_SHIPPINGOPTIONISDEFAULT1: false,
+      L_SHIPPINGOPTIONNAME1: 'Shipping Option expensive NON-default',
+      L_SHIPPINGOPTIONAMOUNT1: 10,
       // PAYMENTREQUEST_0_SHIPTONAME: 'Boonserm Phinphirom',
       // PAYMENTREQUEST_0_SHIPTOSTREET: '205/280 Pattanakan 65',
       // //PAYMENTREQUEST_0_SHIPTOSTREET2: 'Rama 4 Kluaynamthai, Khlong Toei',
